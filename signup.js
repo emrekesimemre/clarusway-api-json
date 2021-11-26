@@ -14,7 +14,7 @@ const fillFormInput = () => {
   localStorage.setItem('password', EncryptStringAES(password.value));
 };
 
-submitBtn.addEventListener('click', () => {
+submitBtn.addEventListener('click', (e) => {
   // e.preventDefault();
   // console.log("clicked");
   apiRegister();
@@ -25,7 +25,6 @@ const apiRegister = async () => {
     email: email.value,
     password: password.value,
   };
-  console.log(bodyData);
   showLoading();
   const response = await axios({
     url: 'https://reqres.in/api/register',
@@ -51,7 +50,7 @@ const apiRegister = async () => {
     localStorage.setItem('tokenKey', data.token);
     localStorage.setItem('tokenKeyEncrypted', EncryptStringAES(data.token));
     removeLoading();
-    window.location.href = 'index1.html';
+    window.location.href = 'userList.html';
   }
 };
 
